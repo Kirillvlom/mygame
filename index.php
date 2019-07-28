@@ -195,7 +195,7 @@ elseif ($_GET['raund'] == 3) {
 			</section>
 		</main>
 		<script src="templates/js/jquery/jquery-3.2.1.min.js"></script>
-		<script src="templates/js/newApp.js"></script>
+		<script src="templates/js/newApp.js?ver=<?echo microtime(1);?>"></script>
 
 	</body>
 	</html>

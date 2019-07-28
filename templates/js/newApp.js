@@ -1,6 +1,6 @@
 
 if (get_cookie('raund') == null) {
-	document.location.href = '/?raund=1';
+	
 	set_cookie ( "raund", "1", 2018, 11, 27 );
 	set_cookie ( "score_user1", "0" , 2018, 11, 27 );
 	set_cookie ( "score_user2", "0", 2018, 11, 27 );

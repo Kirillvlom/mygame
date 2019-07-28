@@ -1,56 +1,12 @@
 <?
 mb_internal_encoding('utf-8');
 include 'app.php';
+include_once 'templates/Components/header.php';
 ?>
-<!DOCTYPE html>
-<html lang='ru'>
-<head>
-	<meta charset='UTF-8'>
-	<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-	<meta name='author' content='Jooit.ru'>
-	<link rel='stylesheet' href='templates/css/normalize.css'>
-	<link rel='stylesheet' href='templates/css/newcss.css?ver=<?echo microtime(1);?>'>
-	<link rel='shortcut icon' href='icon.png' type='image/x-icon'>
-	<link href='https://fonts.googleapis.com/css?family=Vollkorn+SC:400,600' rel='stylesheet'>
 
-	<title>Администрирование</title>
-</head>
 <body class='margin_auto_flex'>
 	<main class='dashboard'>
-		<section class='select_bar'>
-			<div class='logo'>
-				<a href='/'>Своя игра</a>
-			</div>
-			<div class='setting'>
-				<div class='select_setting '>
-					<input type='checkbox' id='open_select_sample'>
-					<label  for='open_select_sample'><a href="admin.php">Вопросы</a></label>
-					<div class='select_setting_sample'>
-						<span><a href="admin.php#raund1">Раунд 1</a></span>
-						<span><a href="admin.php#raund2">Раунд 2</a></span>
-						<span><a href="admin.php#raund3">Раунд 3</a></span>
-					</div>	
-				</div>
-				
-				<div class='select_setting'>
-					<span><a href="admin.php?subject=open">Темы</a></span>
-				</div>
-				<div class='select_setting' style="display: none;">
-					<span>Импорт</span>
-				</div>
-				<div class='select_setting'>
-					<span><a href="admin.php?export=open">Экспорт</a></span>
-				</div>
-				<div class='select_setting'>
-					<span><a href="admin.php?setting=open">Настройки</a></span>
-				</div>
-				<div class='select_setting'>
-					<span><a href="admin.php?help=open">Помощь</a></span>
-				</div>
-				<!--<button class='button_setting bg_red label_tex'>Очистить игру</button>
-					<button class='button_setting button_blue label_tex'>Сохранить вопросы</button>-->
-				</div>
-			</section>
+	<?include_once 'templates/Components/menu.php';?>
 			<section class='content_dashboard'>
 				<?
 				if (empty($_GET)) {
@@ -283,5 +239,5 @@ include 'app.php';
 			</section>
 		</main>
 		<script src='templates/js/jquery/jquery-3.2.1.min.js'></script>
-		<script src='templates/js/adminApp.js'></script>
+		<script src='templates/js/adminApp.js?ver=<?echo microtime(1);?>'></script>
 	</body>	

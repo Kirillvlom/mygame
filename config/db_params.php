@@ -7,5 +7,5 @@ return array(
     'host' => 'localhost',
     'dbname' => 'mygame',
     'user' => 'root',
-    'password' => '1234567',
+    'password' => '',
 );
