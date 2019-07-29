@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Своя игра</title>
+    <link rel='shortcut icon' href='icon.png' type='image/x-icon'>
+    <link rel="stylesheet" href="templates/css/normalize.css">
+    <link rel="stylesheet" href="templates/css/style.css">
+    <script src="templates/js/jquery/jquery-3.2.1.min.js"></script>
+    <script src="templates/js/script.js"></script>
+</head>
+
+<body>
+    <div class="main-unit">
+        <div class="alert-question-opacity">
+            <div class="alert-question">
+                <div class="questions-row line_bottom_grey">
+                    <div class="questions-subject">Тема</div>
+                    <div class="question-close">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" height="38" viewBox="0 0 24 24"
+                            width="38">
+                            <path
+                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                            </path>
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="questions-playing-field">
+                    <div class="playing-field-questions">
+                        <div class="questions-row line_bottom_grey">
+                            <div class="questions-subject" style='width:100%;'>Вопрос за 100</div>
+                        </div>
+                        <div class="questions-field-q">
+                            <div class="q-schedule">
+                                <div class="schedule">
+                                    <div class="schedule-q">
+                                        <div class="q-colum"><span>50%</span></div>
+                                        <div class="q-letter">А</div>
+                                    </div>
+                                    <div class="schedule-q">
+                                        <div class="q-colum"><span>50%</span></div>
+                                        <div class="q-letter">Б</div>
+                                    </div>
+                                    <div class="schedule-q">
+                                        <div class="q-colum"><span>50%</span></div>
+                                        <div class="q-letter">В</div>
+                                    </div>
+                                    <div class="schedule-q">
+                                        <div class="q-colum"><span>50%</span></div>
+                                        <div class="q-letter">В</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="q-img"><img src="img/default/NoPicture.png" alt=""></div>
+                            <div class="q-audio"><audio controls>
+                                    <source src="audio/music.mp3" type="audio/mpeg">
+                                </audio></div>
+                            <div class="q-text">
+                                <p>Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Reiciendis praesentium quisquam natus
+                                    blanditiis dignissimos? Perspiciatis quisquam doloremque
+                                    dolore nam, sequi exercitationem voluptatem illo veniam!
+                                    Illum minima porro perspiciatis. Molestiae, numquam.
+                                </p>
+                                <p>Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Reiciendis praesentium quisquam natus
+                                    blanditiis dignissimos? Perspiciatis quisquam doloremque
+                                    dolore nam, sequi exercitationem voluptatem illo veniam!
+                                    Illum minima porro perspiciatis. Molestiae, numquam.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="playing-field-tips">
+                        <div class="tips-answers">
+                            <div class="answer">
+                                <span class='answer-letter'>А</span>
+                                Reiciendis praesentium quisquam natus
+                                blanditiis dignissimos?
+                            </div>
+                            <div class="answer">
+                                <span class='answer-letter'>Б</span>
+                                Вариант ответа</div>
+                            <div class="answer">
+                                <span class='answer-letter'>В</span>
+                                Вариант ответа</div>
+                            <div class="answer">
+                                <span class='answer-letter'>Г</span>
+                                Вариант ответа</div>
+                        </div>
+                        <div class="tips-help">
+                            <div class="help ">50 на 50</div>
+                            <div class="help">Помощь зала</div>
+                        </div>
+                        <div class="tips-controls">
+                            <div class="tips-controls-player">
+                                <div class="block-score">
+                                    <div class="player-icon">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                                viewBox="0 0 24 24">
+                                                <path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94
+                                                     2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46
+                                                      6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 
+                                                      8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 
+                                                      4v3h16v-3c0-2.66-5.33-4-8-4z" />
+                                                <path d="M0 0h24v24H0z" fill="none" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="player-name">Первый игрок</div>
+                                    <div class="player-score"><span>0</span></div>
+                                </div>
+                                <div class="block-score">
+                                    <div class="player-icon">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                                viewBox="0 0 24 24">
+                                                <path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94
+                                                         2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46
+                                                          6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 
+                                                          8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 
+                                                          4v3h16v-3c0-2.66-5.33-4-8-4z" />
+                                                <path d="M0 0h24v24H0z" fill="none" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="player-name">Второй игрок</div>
+                                    <div class="player-score"><span>0</span></div>
+                                </div>
+                                <div class="block-score">
+                                    <div class="player-icon">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                                                viewBox="0 0 24 24">
+                                                <path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94
+                                                             2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46
+                                                              6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 
+                                                              8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 
+                                                              4v3h16v-3c0-2.66-5.33-4-8-4z" />
+                                                <path d="M0 0h24v24H0z" fill="none" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="player-name">Третий игрок</div>
+                                    <div class="player-score"><span>0</span></div>
+                                </div>
+                            </div>
+                            <div class="tips-controls-info">
+                                <div class="control-raund">Раунд <span>1</span></div>
+                                <div class="control-timer">
+                                    <span>10</span>
+                                    <span>:</span>
+                                    <span>00</span>
+                                </div>
+                                <div class="control-button">
+                                    <button class="button-main button_green">Пауза</button>
+                                </div>
+                                <div class="control-help"><a href="">Помощь</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block-questions">
+            <div class="questions-row">
+                <div class='round-question subject'>Тема</div>
+                <div class='round-question question'>Цена</div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+            </div>
+
+            <div class="questions-row">
+                <div class='round-question subject'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+            </div>
+
+            <div class="questions-row">
+                <div class='round-question subject'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+            </div>
+
+            <div class="questions-row">
+                <div class='round-question subject'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+            </div>
+            <div class="questions-row">
+                <div class='round-question subject'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+            </div>
+
+            <div class="questions-row">
+                <div class='round-question subject'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+                <div class='round-question question'></div>
+            </div>
+        </div>
+        <div class="block-players">
+            <div class="players-score">
+
+                <div class="block-score">
+                    <div class="player-icon">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24">
+                                <path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94
+                             2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46
+                              6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 
+                              8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 
+                              4v3h16v-3c0-2.66-5.33-4-8-4z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="player-name">Первый игрок</div>
+                    <div class="player-score"><span>0</span></div>
+                </div>
+
+                <div class="block-score">
+                    <div class="player-icon">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24">
+                                <path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94
+                             2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46
+                              6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 
+                              8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 
+                              4v3h16v-3c0-2.66-5.33-4-8-4z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="player-name">Второй игрок</div>
+                    <div class="player-score"><span>0</span></div>
+                </div>
+
+                <div class="block-score">
+                    <div class="player-icon">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24">
+                                <path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94
+                             2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46
+                              6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 
+                              8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 
+                              4v3h16v-3c0-2.66-5.33-4-8-4z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="player-name">Третий игрок</div>
+                    <div class="player-score"><span>0</span></div>
+                </div>
+
+            </div>
+
+            <div class='game-control'>
+                <div class="control-raund">Раунд <span>1</span></div>
+                <div class="control-timer">
+                    <span>10</span>
+                    <span>:</span>
+                    <span>00</span>
+                </div>
+                <div class="control-button">
+                    <button class="button-main button_green">Пауза</button>
+                    <button class="button-main button_red">Заново</button>
+                </div>
+                <div class="control-help"><a href="">Помощь</a></div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
