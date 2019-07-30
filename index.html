@@ -18,7 +18,7 @@
         <div class="alert-question-opacity">
             <div class="alert-question">
                 <div class="questions-row line_bottom_grey">
-                    <div class="questions-subject">Тема</div>
+                    <div class="questions-subject" id="Question_subject"></div>
                     <div class="question-close">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" height="38" viewBox="0 0 24 24"
                             width="38">
@@ -32,74 +32,62 @@
                 <div class="questions-playing-field">
                     <div class="playing-field-questions">
                         <div class="questions-row line_bottom_grey">
-                            <div class="questions-subject" style='width:100%;'>Вопрос за 100</div>
+                            <div class="questions-subject" style='width:100%;'>Вопрос за <span
+                                    id="Question_score"></span></div>
                         </div>
                         <div class="questions-field-q">
                             <div class="q-schedule">
                                 <div class="schedule">
                                     <div class="schedule-q">
-                                        <div class="q-colum"><span>50%</span></div>
+                                        <div class="q-colum"><span id='colum_0'>25%</span></div>
                                         <div class="q-letter">А</div>
                                     </div>
                                     <div class="schedule-q">
-                                        <div class="q-colum"><span>50%</span></div>
+                                        <div class="q-colum"><span id='colum_1'>25%</span></div>
                                         <div class="q-letter">Б</div>
                                     </div>
                                     <div class="schedule-q">
-                                        <div class="q-colum"><span>50%</span></div>
+                                        <div class="q-colum"><span id='colum_2'>25%</span></div>
                                         <div class="q-letter">В</div>
                                     </div>
                                     <div class="schedule-q">
-                                        <div class="q-colum"><span>50%</span></div>
+                                        <div class="q-colum"><span id='colum_3'>25%</span></div>
                                         <div class="q-letter">В</div>
                                     </div>
 
                                 </div>
                             </div>
-                            <div class="q-img"><img src="img/default/NoPicture.png" alt=""></div>
-                            <div class="q-audio"><audio controls>
-                                    <source src="audio/music.mp3" type="audio/mpeg">
-                                </audio></div>
-                            <div class="q-text">
-                                <p>Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Reiciendis praesentium quisquam natus
-                                    blanditiis dignissimos? Perspiciatis quisquam doloremque
-                                    dolore nam, sequi exercitationem voluptatem illo veniam!
-                                    Illum minima porro perspiciatis. Molestiae, numquam.
-                                </p>
-                                <p>Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Reiciendis praesentium quisquam natus
-                                    blanditiis dignissimos? Perspiciatis quisquam doloremque
-                                    dolore nam, sequi exercitationem voluptatem illo veniam!
-                                    Illum minima porro perspiciatis. Molestiae, numquam.
-                                </p>
-                            </div>
+                            <div class="q-img"><img src="" alt="" id="Question_img"></div>
+                            <div class="q-audio" id="Question_audio"></div>
+                            <div class="q-text" id="Question_text"> </div>
                         </div>
                     </div>
                     <div class="playing-field-tips">
                         <div class="tips-answers">
-                            <div class="answer">
+                            <div class="answer" data-answer="1" id='answer_1'>
                                 <span class='answer-letter'>А</span>
-                                Reiciendis praesentium quisquam natus
-                                blanditiis dignissimos?
+                                <div id="Question_text_answer_1"></div>
                             </div>
-                            <div class="answer">
+                            <div class="answer" data-answer="2" id='answer_2'>
                                 <span class='answer-letter'>Б</span>
-                                Вариант ответа</div>
-                            <div class="answer">
+                                <div id="Question_text_answer_2"></div>
+                            </div>
+                            <div class="answer" data-answer="3" id='answer_3'>
                                 <span class='answer-letter'>В</span>
-                                Вариант ответа</div>
-                            <div class="answer">
+                                <div id="Question_text_answer_3"></div>
+                            </div>
+                            <div class="answer" data-answer="4" id='answer_4'>
                                 <span class='answer-letter'>Г</span>
-                                Вариант ответа</div>
+                                <div id="Question_text_answer_4"></div>
+                            </div>
                         </div>
                         <div class="tips-help">
-                            <div class="help ">50 на 50</div>
-                            <div class="help">Помощь зала</div>
+                            <div class="help help_1" data-help="1">50 на 50</div>
+                            <div class="help help_2" data-help="2">Помощь зала</div>
                         </div>
                         <div class="tips-controls">
                             <div class="tips-controls-player">
-                                <div class="block-score">
+                                <div class="block-score select-player" data-player="1" data-block="0" id="player_1">
                                     <div class="player-icon">
                                         <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
@@ -114,9 +102,10 @@
                                         </span>
                                     </div>
                                     <div class="player-name">Первый игрок</div>
-                                    <div class="player-score"><span>0</span></div>
+                                    <div class="player-score"><span class="player-score_1"></span></div>
+
                                 </div>
-                                <div class="block-score">
+                                <div class="block-score select-player" data-player="2" data-block="0" id="player_2">
                                     <div class="player-icon">
                                         <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
@@ -131,9 +120,9 @@
                                         </span>
                                     </div>
                                     <div class="player-name">Второй игрок</div>
-                                    <div class="player-score"><span>0</span></div>
+                                    <div class="player-score"><span class="player-score_2"></span></div>
                                 </div>
-                                <div class="block-score">
+                                <div class="block-score select-player" data-player="3" data-block="0" id="player_3">
                                     <div class="player-icon">
                                         <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
@@ -148,20 +137,20 @@
                                         </span>
                                     </div>
                                     <div class="player-name">Третий игрок</div>
-                                    <div class="player-score"><span>0</span></div>
+                                    <div class="player-score"><span class="player-score_3"></span></div>
                                 </div>
                             </div>
                             <div class="tips-controls-info">
-                                <div class="control-raund">Раунд <span>1</span></div>
+                                <div class="control-raund">Раунд <span id='raund'>1</span></div>
                                 <div class="control-timer">
-                                    <span>10</span>
+                                    <span class='timer-min'>10</span>
                                     <span>:</span>
-                                    <span>00</span>
+                                    <span class='timer-sec'>00</span>
                                 </div>
                                 <div class="control-button">
-                                    <button class="button-main button_green">Пауза</button>
+                                    <a class="button-main button_green  control-help" href=''>Помощь</a>
                                 </div>
-                                <div class="control-help"><a href="">Помощь</a></div>
+
                             </div>
                         </div>
                     </div>
@@ -172,8 +161,8 @@
         <div class="block-questions">
             <div class="questions-row">
                 <div class='round-question subject'>Тема</div>
-                <div class='round-question question'>Цена</div>
-                <div class='round-question question'></div>
+                <div class='round-question question' data-question='1' data-answer="no">Цена</div>
+                <div class='round-question question' data-question='2' data-answer="no"></div>
                 <div class='round-question question'></div>
                 <div class='round-question question'></div>
                 <div class='round-question question'></div>
@@ -240,7 +229,11 @@
                         </span>
                     </div>
                     <div class="player-name">Первый игрок</div>
-                    <div class="player-score"><span>0</span></div>
+                    <div class="player-score"><span class="player-score_1"></span></div>
+                    <div class="player-help">
+                        <span id="player_1_inHalf">50/50</span>
+                        <span id="player_1_hall">Зал</span>
+                    </div>
                 </div>
 
                 <div class="block-score">
@@ -257,7 +250,11 @@
                         </span>
                     </div>
                     <div class="player-name">Второй игрок</div>
-                    <div class="player-score"><span>0</span></div>
+                    <div class="player-score"><span class="player-score_2"></span></div>
+                    <div class="player-help">
+                        <span id="player_2_inHalf">50/50</span>
+                        <span id="player_2_hall">Зал</span>
+                    </div>
                 </div>
 
                 <div class="block-score">
@@ -274,7 +271,11 @@
                         </span>
                     </div>
                     <div class="player-name">Третий игрок</div>
-                    <div class="player-score"><span>0</span></div>
+                    <div class="player-score"><span class="player-score_3"></span></div>
+                    <div class="player-help">
+                        <span id="player_3_inHalf">50/50</span>
+                        <span id="player_3_hall">Зал</span>
+                    </div>
                 </div>
 
             </div>
@@ -282,12 +283,12 @@
             <div class='game-control'>
                 <div class="control-raund">Раунд <span>1</span></div>
                 <div class="control-timer">
-                    <span>10</span>
+                    <span class='timer-min'>10</span>
                     <span>:</span>
-                    <span>00</span>
+                    <span class='timer-sec'>00</span>
                 </div>
                 <div class="control-button">
-                    <button class="button-main button_green">Пауза</button>
+                    <button class="button-main button_green " id='pause-game'>Пауза</button>
                     <button class="button-main button_red">Заново</button>
                 </div>
                 <div class="control-help"><a href="">Помощь</a></div>
