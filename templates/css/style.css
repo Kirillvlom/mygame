@@ -47,7 +47,7 @@ body {
 	z-index: 5;
 }
 
-.alert-info-opacity {
+.alert-info-opacity, .alert-img-opacity {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -55,7 +55,26 @@ body {
 	background: rgba(0, 0, 0, 0.7);
 	display: none;
 }
-
+.alert-img{
+	position: absolute;
+	z-index: 550;
+	min-width: 30%;
+	max-width: 80%;
+	min-height: 30%;
+	max-height: 80%;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	border-radius: 15px;
+	overflow: hidden;
+	cursor: zoom-out;
+}
+#alert-img{
+	width: 100%;
+	height: 100%;
+}
 .alert-info {
 	position: absolute;
 	z-index: 600;
@@ -388,7 +407,8 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	text-align: center
+	text-align: center;
+	word-break: break-word;
 }
 
 .subject {
@@ -442,13 +462,15 @@ body {
 .player-score,
 .control-raund,
 .control-timer>span,
-.questions-subject, .player-help {
+.questions-subject,
+.player-help,
+.control-help>a {
 	font-size: 20px;
 	font-weight: 900;
 	color: #084a44;
 }
 
-.player-help > span{
+.player-help>span {
 	display: block;
 	float: left;
 	width: 50%;
@@ -458,12 +480,17 @@ body {
 	background: #4caf50;
 	font-size: 15px;
 }
-.control-help {
-	display: block;
-	color: #fff;
+.control-help{
+	color: #FFF;
 	text-align: center;
 }
-
+.control-help>a {
+	display: block;
+	text-align: center;
+}
+#Question_img{
+	cursor: zoom-in;
+}
 .button-main {
 	width: 150px;
 	border: none;
@@ -490,7 +517,8 @@ body {
 	position: relative;
 	cursor: inherit;
 }
-.correct-answer{
+
+.correct-answer {
 	background: #4caf50 !important;
 	color: #fff;
 	position: relative;
@@ -518,23 +546,24 @@ body {
 	align-items: center;
 }
 
-.block >.player-name, .block >
-.player-score
- {
+.block>.player-name,
+.block>.player-score {
 	color: #fff;
 	fill: #fff;
 }
-.select >.player-name,.select >
-.player-score
- {
+
+.select>.player-name,
+.select>.player-score {
 	color: #fff;
 	fill: #fff;
 }
-.block > .player-icon > span > svg{
+
+.block>.player-icon>span>svg {
 	color: #fff;
 	fill: #fff;
 }
-.select > .player-icon > span > svg{
+
+.select>.player-icon>span>svg {
 	color: #fff;
 	fill: #fff;
 }

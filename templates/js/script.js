@@ -9,14 +9,14 @@ $(document).ready(function () {
 	let selectQuestion = " ";
 	let Question_ = {
 		subject: "Тема вопроса",
-		img: "img/default/questionEdit.png",
+		img: "img/default/NoPicture.png",
 		audio: "audio/question_1.mp3",
 		text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis praesentium quisquam natus blanditiis dignissimos? Perspiciatis quisquam doloremque dolore nam, sequi exercitationem voluptatem illo veniam! Illum minima porro perspiciatis. Molestiae, numquam.\
 		Lorem ipsum dolor sit amet consectetur adipisicing elit.Reiciendis praesentium quisquam natus blanditiis dignissimos ? Perspiciatis quisquam doloremque dolore nam,\
 		sequi exercitationem voluptatem illo veniam!Illum minima porro perspiciatis.Molestiae,\
 		numquam.",
 		text_answer: {
-			1: "Первый ответ",
+			1: "Максимум 195 символов",
 			2: "Второй ответ",
 			3: "Третий ответ",
 			4: "Четвертый ответ",
@@ -47,7 +47,7 @@ $(document).ready(function () {
 		}
 	}
 	let playerBlockQuestion_ = 0;
-
+	let selectedAnswers = 0;
 
 
 	/*Функции*/
@@ -128,7 +128,7 @@ $(document).ready(function () {
 
 	});
 	//Закрытие вопроса
-	$(".question-close").click(function () {
+	function closeQuestion() {
 		$(".alert-question-opacity").animate({
 			opacity: "0"
 		}, 350);
@@ -138,6 +138,10 @@ $(document).ready(function () {
 			})
 		}, 500);
 		clearQuestion_();
+	}
+	//Закрытие вопроса
+	$(".question-close").click(function () {
+		closeQuestion();
 	});
 
 	//Обновление счета игроков
@@ -156,7 +160,7 @@ $(document).ready(function () {
 			}
 		}
 	}
-
+	//Очищаем область с вопросом 
 	function clearQuestion_() {
 		console.log(1);
 		$(".q-schedule").css({
@@ -171,20 +175,27 @@ $(document).ready(function () {
 		$(".block-score").data("block", "0");
 		selectPlayer = 0;
 		playerBlockQuestion_ = 0;
+		players[1].block = 0;
+		players[2].block = 0;
+		players[3].block = 0;
+
 	};
 	//Выбор правильного ответа
 	$(".answer").click(function (e) {
 		if (selectPlayer == 0) {
 			alertInfo("Для выбора ответа, выберите игрока", "info", 2);
-		} else if (selectPlayer > 0) {
+		} else if (selectPlayer > 0 && (!$(this).hasClass("correct-answer"))) {
 			let answer = $(this).data("answer");
 			if (answer == Question_.answer) {
 				alertInfo("Вы угадали правильный ответ", "info", 2);
 				players[selectPlayer].score += +(Question_.score);
 				$(this).addClass("correct-answer");
 				$(selectQuestion).data("answer", "yes").addClass("selected-answer");
-
+				setTimeout(function () {
+					closeQuestion();
+				}, 2300);
 			} else {
+
 				alertInfo("Выбранный вами ответ не верный", "info", 2);
 				players[selectPlayer].score -= +(Question_.score);
 				players[selectPlayer].block = 1;
@@ -193,9 +204,13 @@ $(document).ready(function () {
 				$("#player_" + selectPlayer).data("block", "1").removeClass("select").addClass("block");
 				selectPlayer = 0;
 				playerBlockQuestion_ += 1;
+				selectedAnswers += 1;
 				if (playerBlockQuestion_ == 3) {
 					$("#answer_" + Question_.answer).addClass("correct-answer");
-					clearQuestion_();
+					$(selectQuestion).data("answer", "yes").addClass("selected-answer");
+					setTimeout(function () {
+						closeQuestion();
+					}, 2300);
 				}
 				for (let i = 1; i <= 3; i++) {
 					if (players[i].block == 0) {
@@ -291,6 +306,7 @@ $(document).ready(function () {
 				if ((array[key] != rand[0]) && (array[key] != rand[1])) {
 					$("#Question_text_answer_" + array[key]).parent().addClass("selected-answer");
 				}
+
 			}
 		} else if (tips == 2) {
 			//Помощь зала
@@ -312,6 +328,17 @@ $(document).ready(function () {
 
 		}
 	}
+
+	//Увеличение фото при клике
+	$("#Question_img").click(function () {
+		let src = $(this).prop("src");
+		let div = $(".alert-img-opacity");
+		$("#alert-img").prop("src", src);
+		$(div).fadeIn();
+	});
+	$(".alert-img-opacity").click(function () {
+		$(this).fadeOut();
+	});
 
 	//Запуск всей игры
 	gameTimer();
