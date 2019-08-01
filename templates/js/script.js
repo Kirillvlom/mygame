@@ -65,7 +65,7 @@ $(document).ready(function () {
 			<div class='alert-info'><div class='info-title alert-information'>\
 			Информация</div><span class='info-text'>" + textInfo + "</span></div></div");
 		}
-		$(".alert-info-opacity").show('slow');
+		$(".alert-info-opacity").show('300');
 		setTimeout(function () {
 			$(".alert-info-opacity").hide('slow');
 		}, timeShow * 1000);

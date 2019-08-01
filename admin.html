@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Админка</title>
+    <link rel='shortcut icon' href='icon.png' type='image/x-icon'>
+    <link rel="stylesheet" href="templates/css/normalize.css">
+    <link rel="stylesheet" href="templates/css/style.css">
+</head>
+
+<body>
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.classList.add('fadeOut');
+            }, 100);
+        });
+    </script>
+    <div class="main-unit-admin">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class='link-header'>
+                    <img src="icon.png" alt="">
+                    <span>Своя игра</span>
+                </a>
+            </div>
+            <div class="sidebar-menu">
+                <ul class="menu">
+                    <li>
+                        <div class='link-menu' data-link="questions">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="#2196f3">
+                                <path fill="none" d="M0 0h24v24H0V0z" />
+                                <path
+                                    d="M11 23.59v-3.6c-5.01-.26-9-4.42-9-9.49C2 5.26 6.26 1 11.5 1S21 5.26 21 10.5c0 4.95-3.44 9.93-8.57 12.4l-1.43.69zM11.5 3C7.36 3 4 6.36 4 10.5S7.36 18 11.5 18H13v2.3c3.64-2.3 6-6.08 6-9.8C19 6.36 15.64 3 11.5 3zm-1 11.5h2v2h-2zm2-1.5h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z" />
+                            </svg>
+                            <span>Вопросы</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='link-menu' data-link="topics">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="#ff5722">
+                                <path fill="none" d="M0 0h24v24H0V0z" />
+                                <path
+                                    d="M7 15h7v2H7zm0-4h10v2H7zm0-4h10v2H7zm12-4h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75zM19 19H5V5h14v14z" />
+                            </svg>
+                            <span>Темы</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='link-menu' data-link="results">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="#673ab7">
+                                <path fill="none" d="M0 0h24v24H0V0z" />
+                                <path
+                                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z" />
+                            </svg>
+                            <span>Результаты</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='link-menu' data-link="export">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="#009688">
+                                <path fill="none" d="M0 0h24v24H0V0z" />
+                                <path d="M9 3L5 6.99h3V14h2V6.99h3L9 3zm7 14.01V10h-2v7.01h-3L15 21l4-3.99h-3z" /></svg>
+                            <span>Экспорт</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='link-menu' data-link="statistics">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                width="24" height="24" viewBox="0 0 24 24" fill="#e91e63">
+                                <defs>
+                                    <path id="a" d="M0 0h24v24H0z" />
+                                </defs>
+                                <clipPath>
+                                    <use xlink:href="#a" overflow="visible" />
+                                </clipPath>
+                                <defs>
+                                    <path id="b" d="M0 0h24v24H0z" />
+                                </defs>
+                                <clipPath>
+                                    <use xlink:href="#b" overflow="visible" />
+                                </clipPath>
+                                <path
+                                    d="M23 8c0 1.1-.9 2-2 2-.18 0-.35-.02-.51-.07l-3.56 3.55c.05.16.07.34.07.52 0 1.1-.9 2-2 2s-2-.9-2-2c0-.18.02-.36.07-.52l-2.55-2.55c-.16.05-.34.07-.52.07s-.36-.02-.52-.07l-4.55 4.56c.05.16.07.33.07.51 0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2c.18 0 .35.02.51.07l4.56-4.55C8.02 9.36 8 9.18 8 9c0-1.1.9-2 2-2s2 .9 2 2c0 .18-.02.36-.07.52l2.55 2.55c.16-.05.34-.07.52-.07s.36.02.52.07l3.55-3.56C19.02 8.35 19 8.18 19 8c0-1.1.9-2 2-2s2 .9 2 2z" />
+                            </svg>
+                            <span>Статистика</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='link-menu' data-link="help-gitHub">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="#ff9800">
+                                <path fill="none" d="M0 0h24v24H0V0z" />
+                                <path
+                                    d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z" />
+                            </svg>
+                            <span>О приложении</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-container">
+            <div class="page-container-header">
+                <div class="header-user">
+                    <a href="">Выйти</a>
+                </div>
+            </div>
+
+            <div class="page-container-content">
+
+                <div class="content-questions">
+
+                    <div class="row-content rounds">
+                        <div class="round-c">
+                            <div class="c-title">1 раунд</div>
+                            <div class="c-info">
+                                <span class="count-round-1">10/30 заполнено</span>
+                                <div class="filling-percentage filling-percentage-0" id="percentage-round-1">33 %</div>
+                            </div>
+                        </div>
+                        <div class="round-c">
+                            <div class="c-title">2 раунд</div>
+                            <div class="c-info">
+                                <span class="count-round-1">15/30 заполнено</span>
+                                <div class="filling-percentage filling-percentage-50" id="percentage-round-1">50 %</div>
+                            </div>
+                        </div>
+                        <div class="round-c">
+                            <div class="c-title">3 раунд</div>
+                            <div class="c-info">
+                                <span class="count-round-1">30/30 заполнено</span>
+                                <div class="filling-percentage filling-percentage-100" id="percentage-round-1">100 %
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-content rounds-questions">
+                        <div class="rounds-questions-content">
+
+                            <div class="row-block">
+                                <div class="row-content row-title">Тема</div>
+                                <div class="row-block-question">
+
+                                    <div class="row-question">
+                                        <div class="row-question-title">
+                                            <span>№ 1</span>
+                                            <span>за 100</span>
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="#4caf50">
+                                                    <path fill="none" d="M0 0h24v24H0V0z" />
+                                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="row-question-img">
+                                            <img src="img/default/NoPicture.png" alt="">
+                                        </div>
+                                        <div class="row-question-audio">
+                                            <audio controls="">
+                                                <source src="audio/question_1.mp3" type="audio/mp3"></audio>
+                                        </div>
+                                        <div class="row-question-text">Краткое начало текста вопроса ваывавыа. Максимум
+                                            65 символов</div>
+                                    </div>
+                                    <div class="row-question">
+                                        <div class="row-question-title">
+                                            <span>№ 1</span>
+                                            <span>за 100</span>
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="#4caf50">
+                                                    <path fill="none" d="M0 0h24v24H0V0z" />
+                                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="row-question-img">
+                                            <img src="img/default/NoPicture.png" alt="">
+                                        </div>
+                                        <div class="row-question-audio">
+                                            <audio controls="">
+                                                <source src="audio/question_1.mp3" type="audio/mp3"></audio>
+                                        </div>
+                                        <div class="row-question-text">Краткое начало текста вопроса ваывавыа. Максимум
+                                            65 символов</div>
+                                    </div>
+
+                                    <div class=" row-question">
+                                        <div class="row-question-title">
+                                            <span>№ 1</span>
+                                            <span>за 100</span>
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="#4caf50">
+                                                    <path fill="none" d="M0 0h24v24H0V0z" />
+                                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="row-question-img">
+                                            <img src="img/default/NoPicture.png" alt="">
+                                        </div>
+                                        <div class="row-question-audio">
+                                            <audio controls="">
+                                                <source src="audio/question_1.mp3" type="audio/mp3"></audio>
+                                        </div>
+                                        <div class="row-question-text">Краткое начало текста вопроса ваывавыа. Максимум
+                                            65 символов</div>
+                                    </div>
+
+                                    <div class="row-question">
+                                        <div class="row-question-title">
+                                            <span>№ 1</span>
+                                            <span>за 100</span>
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="#4caf50">
+                                                    <path fill="none" d="M0 0h24v24H0V0z" />
+                                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="row-question-img">
+                                            <img src="img/default/NoPicture.png" alt="">
+                                        </div>
+                                        <div class="row-question-audio">
+                                            <audio controls="">
+                                                <source src="audio/question_1.mp3" type="audio/mp3"></audio>
+                                        </div>
+                                        <div class="row-question-text">Краткое начало текста вопроса ваывавыа. Максимум
+                                            65 символов</div>
+                                    </div>
+
+                                    <div class="row-question">
+                                        <div class="row-question-title">
+                                            <span>№ 1</span>
+                                            <span>за 100</span>
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="#4caf50">
+                                                    <path fill="none" d="M0 0h24v24H0V0z" />
+                                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="row-question-img">
+                                            <img src="img/default/NoPicture.png" alt="">
+                                        </div>
+                                        <div class="row-question-audio">
+                                            <audio controls="">
+                                                <source src="audio/question_1.mp3" type="audio/mp3"></audio>
+                                        </div>
+                                        <div class="row-question-text">Краткое начало текста вопроса ваывавыа. Максимум
+                                            65 символов</div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="row-block">
+                                <div class="row-content row-title">Тема</div>
+                                <div class="row-block-question">
+                                    <div class="row-content row-question">Вопрос 1</div>
+                                    <div class="row-content row-question">Вопрос 2</div>
+                                    <div class="row-content row-question">Вопрос 3</div>
+                                    <div class="row-content row-question">Вопрос 4</div>
+                                    <div class="row-content row-question">Вопрос 5</div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="rounds-question-setting">
+                            <div class="row-content">
+                                <div class="close-question-setting row-content-title bg_red"> Закрыть</div>
+                                <div class="row-content-title">
+                                    Редактирование вопроса № <span>1</span>
+                                </div>
+                                <div class="row-content-img">
+                                    <img src="img/default/background.jpg" alt="">
+                                </div>
+                                <div class="row-content-img-Upload">
+                                   
+                                        <label class="label img-Upload">
+                                            <span class="title">Добавить файл</span>
+                                            <input type="file">
+                                        </label>
+                                    
+
+                                </div>
+                                <div class="row-content-audio">
+                                    <audio controls="">
+                                        <source src="audio/question_1.mp3" type="audio/mp3"></audio>
+                                </div>
+                                <div class="row-content-audio-Upload">
+                                    <label class="label">
+                                        <span class="title">Добавить файл</span>
+                                        <input type="file">
+                                    </label>
+                                </div>
+                                <div class="row-content-text">
+                                    <span class="text-max" title="Лимит букв"></span>
+                                    <textarea name="" class="textarea" id='textarea_text' maxlength="150"> </textarea>
+                                </div>
+                                <div class="row-content">Варианты ответа</div>
+                                <div class="row-content-answer">
+                                    <div class="answer">
+                                        <span class="answer-var">1 Вариант
+                                            <input type="radio" name="answer" id='_answer_1' value="1">
+                                            <label for="_answer_1" class="label_answer">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    viewBox="0 0 24 24" fill="#fff">
+                                                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"></path>
+                                                </svg>
+                                            </label>
+                                        </span>
+                                        <textarea name="" class="textarea" maxlength="170"></textarea>
+                                    </div>
+                                    <div class="answer">
+                                        <span class="answer-var">2 Вариант
+                                            <input type="radio" name="answer" id='_answer_2' value="1">
+                                            <label for="_answer_2" class="label_answer">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    viewBox="0 0 24 24" fill="#fff">
+                                                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"></path>
+                                                </svg>
+                                            </label>
+                                        </span>
+                                        <textarea name="" class="textarea" maxlength="170"></textarea>
+                                    </div>
+                                    <div class="answer">
+                                        <span class="answer-var">3 Вариант
+                                            <input type="radio" name="answer" id='_answer_3' value="1">
+                                            <label for="_answer_3" class="label_answer">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    viewBox="0 0 24 24" fill="#fff">
+                                                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"></path>
+                                                </svg>
+                                            </label>
+                                        </span>
+                                        <textarea name="" class="textarea" maxlength="170"></textarea>
+                                    </div>
+                                    <div class="answer">
+                                        <span class="answer-var">4 Вариант
+                                            <input type="radio" name="answer" id='_answer_4' value="1">
+                                            <label for="_answer_4" class="label_answer">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                    viewBox="0 0 24 24" fill="#fff">
+                                                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                                                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"></path>
+                                                </svg>
+                                            </label>
+                                        </span>
+                                        <textarea name="" class="textarea" maxlength="170"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row-content button-save">
+                                    <button class="button bg_red">Очистить</button>
+                                    <button class="button button_green">Сохранить</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="templates/js/jquery/jquery-3.2.1.min.js"></script>
+    <script src="templates/js/dropzone.js"></script>
+    <script src="templates/js/admin.js"></script>
+</body>
+
+</html>
