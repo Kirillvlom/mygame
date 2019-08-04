@@ -31,7 +31,9 @@ a {
 html,
 body,
 .main-unit,
-.main-unit-admin {
+.main-unit-admin,
+.module-error,
+.start-game {
 	min-width: 1000px;
 	min-height: 600px;
 	width: 100%;
@@ -45,14 +47,67 @@ body {
 	z-index: 5;
 }
 
-
-.main-unit {
+.main-unit,
+.module-error {
 	background: url('../../img/default/background.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+.start-game-menu{
+	width: 35%;
+    height: 60%;
+}
+.game-menu-title{
+	width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-size: 45px;
+    
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.game-menu-title > a{
+	color: #313435;
+}
+.game-menu-actions {
+    padding: 10px;
+}
 
+.action {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+.action > a {
+	display: block;
+    width: 75%;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 30px;
+	cursor: pointer;
+	text-align: center
+}
+.module-error,
+.start-game,
+.logo-site {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
+.error-main-content {
+	text-align: center
+}
+
+.error-text {
+	font-size: 50px;
+}
+
+.content-404 {
+	font-size: 35px;
+}
 
 .alert-info-opacity,
 .alert-img-opacity {
@@ -1051,6 +1106,16 @@ body {
 .label:hover i,
 .label:hover .title {
 	color: #000
+}
+
+@media screen and (max-width: 1400px) {
+	.rounds-question-setting {
+		width: 100%;
+	}
+
+	.row-question {
+		width: 300px !important;
+	}
 }
 
 @media screen and (min-height: 850px) {

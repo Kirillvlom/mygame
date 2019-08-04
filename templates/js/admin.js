@@ -22,28 +22,35 @@ $(document).ready(function () {
             $(".text-max").css({
                 "color": "red"
             });
-        }  else {
+        } else {
             $(".text-max").css({
                 "color": "#000"
             });
         }
         $(".text-max").html(lengthS);
     })
-    Dropzone.options.IDhtmlcont = {
-        paramName: "file", // имя переменной, используемой для передачи файлов
-        maxFilesize: 2, // лимит размера файла в МБ
-        parallelUploads: 1, //кол-во параллельных обращений к серверу
-        maxFiles: 10, //макс. число файлов в данном контейнере
-        accept: function(file, done) {
-          //произвольная функция проверки загружаемых файлов
-          if (file.type == "image/png") {
-            //сообщение без ошибки, если файл забракован
-            done("I don`t accept PNGs.");
-          }
-          //чтобы файл был принят, нужно вызвать done без параметров
-          else { done(); }
-        }
-      };
-    let imgUpload = new Dropzone(".img-Upload");
 
+    let dropIMG = document.getElementById('drop-img');
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropIMG.addEventListener(eventName, preventDefaults, false)
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault()
+        e.stopPropagation()
+    };
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropIMG.addEventListener(eventName, highlight, false)
+    });
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropIMG.addEventListener(eventName, unhighlight, false)
+    })
+
+    function highlight(e) {
+        dropIMG.classList.add('highlight')
+    }
+
+    function unhighlight(e) {
+        dropIMG.classList.remove('highlight')
+    }
 });

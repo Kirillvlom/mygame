@@ -1,7 +1,7 @@
 <?
 return array (
     'host' => '127.0.0.1',
-    'dbname' => 'my_university',
+    'dbname' => 'mygame',
     'user' => 'root',
-    'password' => '1234567'
+    'password' => ''
 );

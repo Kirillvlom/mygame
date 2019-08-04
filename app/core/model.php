@@ -13,7 +13,7 @@ class Model
 			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
 			PDO::ATTR_EMULATE_PREPARES   => false,
 		];
-		$db = new PDO($dsn,'root', '1234567', $opt);
+		$db = new PDO($dsn,$params["user"], $params["password"], $opt);
         // Задаем кодировку
 		$db->exec("set names utf8");
 		return  $db;
