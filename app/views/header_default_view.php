@@ -10,5 +10,6 @@
     <link rel="stylesheet" href="/templates/css/normalize.css?<?echo microtime()?>">
     <link rel="stylesheet" href="/templates/css/style.css?<?echo microtime()?>">
     <script src="/templates/js/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/templates/js/js.cookie.js"></script>
     <script src="/templates/js/script.js?<?echo microtime()?>"></script>
 </head>

@@ -37,7 +37,7 @@ class Model_admin extends Model
                 2 => 'Третий вариант ответа',
                 3 => 'Четвертый вариант ответа',
             ]);
-            $s .= "('$id_topics', '$round','/img/default/NoPicture.png','Lorem ipsum, dolor sit amet consectetur adipisicing elit.','/audio/question.mp3','$price','$answers', '3'),";
+            $s .= "('$id_topics', '$round','/img/default/NoPicture.png','Lorem ipsum, dolor sit amet consectetur adipisicing elit.','/audio/question_$a.mp3','$price','$answers', '3'),";
 
             if ($a % 30 == 0) {
                 $round++;

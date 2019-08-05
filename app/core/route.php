@@ -65,7 +65,7 @@ class Route
 			// вызываем действие контроллера
 			$controller->$action($action_id);
 		} else {
-			include "app/views/404.php";
+			$controller->action_index();
 		}
 	}
 

@@ -13,7 +13,6 @@ class Controller_Raund extends Controller
 
 	function action_1()
 	{
-
 		$getQuestion = $this ->model -> getQuestion("all", 'id_question, id_topics, price',"1");
 		$getTopics =  $this ->model ->getTopics("all");
 		$data = [
@@ -25,12 +24,27 @@ class Controller_Raund extends Controller
 	}
 	function action_2()
 	{
-		$this->view->generate('raund_view.php', 'header_default_view.php', 'Своя игра - 2 раунд');
+		$getQuestion = $this ->model -> getQuestion("all", 'id_question, id_topics, price',"2");
+		$getTopics =  $this ->model ->getTopics("all");
+		$data = [
+			"getQuestion" => $getQuestion,
+			"getTopics" => $getTopics
+		];
+
+		$this->view->generate('raund_view.php','header_default_view.php', 'Своя игра - 2 раунд', $data, $param = ["raund" => "2"]);
 	}
 	function action_3()
 	{
-		$this->view->generate('raund_view.php', 'header_default_view.php', 'Своя игра - 3 раунд');
+		$getQuestion = $this ->model -> getQuestion("all", 'id_question, id_topics, price',"3");
+		$getTopics =  $this ->model ->getTopics("all");
+		$data = [
+			"getQuestion" => $getQuestion,
+			"getTopics" => $getTopics
+		];
+
+		$this->view->generate('raund_view.php','header_default_view.php', 'Своя игра - 3 раунд', $data, $param = ["raund" => "3"]);
 	}
+
 	function action_getQuestion()
 	{
 		
@@ -53,4 +67,18 @@ class Controller_Raund extends Controller
 		];
 		echo json_encode($Question_);
 	}
+	function action_saveResult()
+	{
+		
+		$array =  json_decode($_POST["saveResult"], true);
+		if ($this-> model ->saveResult($array)) {
+			echo 1;
+		}else{
+			echo 0;
+		}
+		
+
+	}
+	
+
 }

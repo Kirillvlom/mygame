@@ -128,14 +128,14 @@
                                 </div>
                             </div>
                             <div class="tips-controls-info">
-                                <div class="control-raund">Раунд <span id='raund'>1</span></div>
+                                <div class="control-raund">Раунд <span id='raund'><?echo $param["raund"]?></span></div>
                                 <div class="control-timer">
                                     <span class='timer-min'>10</span>
                                     <span>:</span>
                                     <span class='timer-sec'>00</span>
                                 </div>
                                 <div class="control-button">
-                                    <a class="button-main button_green  control-help" href=''>Помощь</a>
+                                    <a class="button-main button_green  control-help" href='https://github.com/Kirillvlom/mygame/blob/master/README.md' target="target">Помощь</a>
                                 </div>
 
                             </div>
@@ -240,9 +240,9 @@
                 </div>
                 <div class="control-button">
                     <button class="button-main button_green " id='pause-game'>Пауза</button>
-                    <button class="button-main button_red">Заново</button>
+                    <button class="button-main button_red" onclick="document.location.href ='/'">Заново</button>
                 </div>
-                <div class="control-help"><a href="https://github.com/Kirillvlom/mygame" target="target">Помощь</a>
+                <div class="control-help"><a href="https://github.com/Kirillvlom/mygame/blob/master/README.md" target="target">Помощь</a>
                 </div>
 
             </div>

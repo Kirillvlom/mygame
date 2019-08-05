@@ -12,7 +12,7 @@
                     <a href="results/" class='button_blue'>Результаты</a>
                 </div>
                 <div class="action">
-                    <a href="https://github.com/Kirillvlom/mygame" class='button_blue' target="target">Об игре</a>
+                    <a href="https://github.com/Kirillvlom/mygame/blob/master/README.md" class='button_blue' target="target">Об игре</a>
                 </div>
             </div>
         </div>

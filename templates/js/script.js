@@ -1,4 +1,7 @@
-if (document.location.pathname != "/") {
+if (document.location.pathname != "/" && document.location.pathname != "/results/") {
+	/*window.onbeforeunload = function () {
+		return "Hey, you're leaving the site. Bye!";
+	};*/
 	$(document).ready(function () {
 		/*Переменные*/
 		let roundTime = {
@@ -22,26 +25,27 @@ if (document.location.pathname != "/") {
 			answer: 0,
 			score: ""
 		}
+		let raund = Cookies.getJSON("game")["raund"];
 		let selectPlayer = 0; // Выбранный игрок для ответа
 		//let selectAnswer = "no"; // Выбранный игрок для ответа
 		let players = {
 			1: {
-				inHalf: 0,
-				hall: 0,
-				score: 0,
-				block: 0
+				inHalf: Cookies.getJSON("game")[1]["inHalf"],
+				hall: Cookies.getJSON("game")[1]["hall"],
+				score: Cookies.getJSON("game")[1]["score"],
+				block: Cookies.getJSON("game")[1]["block"]
 			},
 			2: {
-				inHalf: 0,
-				hall: 0,
-				score: 0,
-				block: 0
+				inHalf: Cookies.getJSON("game")[2]["inHalf"],
+				hall: Cookies.getJSON("game")[2]["hall"],
+				score: Cookies.getJSON("game")[2]["score"],
+				block: Cookies.getJSON("game")[2]["block"]
 			},
 			3: {
-				inHalf: 0,
-				hall: 0,
-				score: 0,
-				block: 0
+				inHalf: Cookies.getJSON("game")[3]["inHalf"],
+				hall: Cookies.getJSON("game")[3]["hall"],
+				score: Cookies.getJSON("game")[3]["score"],
+				block: Cookies.getJSON("game")[3]["block"]
 			}
 		}
 		let playerBlockQuestion_ = 0;
@@ -72,7 +76,41 @@ if (document.location.pathname != "/") {
 			}, timeShow * 1000);
 
 		}
+		//Запуск следующего раунда
+		function newRaund() {
+			raund++;
+			let locHref = "/raund/" + raund;
+			if (raund == 4) {
+				raund = 1;
+				saveResult();
+				locHref = "/";
+			}
+			Cookies.set("game", {
+				1: {
+					inHalf: players[1].inHalf,
+					hall: players[1].hall,
+					score: players[1].score,
+					block: players[1].block
+				},
+				2: {
+					inHalf: players[2].inHalf,
+					hall: players[2].hall,
+					score: players[2].score,
+					block: players[2].block
+				},
+				3: {
+					inHalf: players[3].inHalf,
+					hall: players[3].hall,
+					score: players[3].score,
+					block: players[3].block
+				},
+				"raund": raund
+			});
+			setTimeout(function () {
+				document.location.href = locHref;
+			}, 2000);
 
+		}
 
 		//Таймер игры
 		function gameTimer() {
@@ -80,7 +118,7 @@ if (document.location.pathname != "/") {
 				if (roundTime.sec == 0) {
 					alertInfo("Время раунда вышло", "info", alertInfoTime);
 					setTimeout(function () {
-						document.location.href = "vk.com"
+						newRaund();
 					}, alertInfoTime * 1000);
 				}
 			}
@@ -156,9 +194,10 @@ if (document.location.pathname != "/") {
 					})
 				}
 			}
-			console.log('%c%s', 'color: eloy; font: 1.2rem/1 Tahoma;', "Отгадано вопросов "+countQuestion);
+			console.log('%c%s', 'color: eloy; font: 1.2rem/1 Tahoma;', "Отгадано вопросов " + countQuestion);
 
-			if (countQuestion == 30) {
+			if (countQuestion == 3) {
+				newRaund();
 			}
 		}
 		//Очищаем область с вопросом 
@@ -189,7 +228,7 @@ if (document.location.pathname != "/") {
 				if (answer == Question_.answer) {
 					alertInfo("Вы угадали правильный ответ", "info", 2);
 					players[selectPlayer].score += +(Question_.score);
-					countQuestion +=1;
+					countQuestion += 1;
 					$(this).addClass("correct-answer");
 					$(selectQuestion).data("answer", "yes").addClass("selected-answer");
 					setTimeout(function () {
@@ -369,9 +408,53 @@ if (document.location.pathname != "/") {
 		$(".alert-img-opacity").click(function () {
 			$(this).fadeOut();
 		});
+		//Сохраняем результат в БД
+		function saveResult() {
+			$.ajax({
+				type: "POST",
+				url: "/raund/saveResult",
+				data: "saveResult=" + JSON.stringify(players),
+				success: function (msg) {
+					if (msg == 1) {
+						console.log("Результат сохранен");
+					} else {
+						console.log("Ошибка сохранения");
+					}
+				}
+			});
+		}
 
 		//Запуск всей игры
-		gameTimer();
-		accountUpdate();
+		const startGame = () => {
+			if (Cookies.getJSON("game")["raund"] != document.location.pathname.slice(-1)) {
+				document.location.href = "/raund/" + Cookies.getJSON("game")["raund"];
+			}
+			gameTimer();
+			accountUpdate();
+		};
+
+		startGame();
+	});
+} else {
+	Cookies.set("game", {
+		1: {
+			inHalf: 0,
+			hall: 0,
+			score: 0,
+			block: 0
+		},
+		2: {
+			inHalf: 0,
+			hall: 0,
+			score: 0,
+			block: 0
+		},
+		3: {
+			inHalf: 0,
+			hall: 0,
+			score: 0,
+			block: 0
+		},
+		"raund": "1"
 	});
 }
