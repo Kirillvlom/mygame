@@ -194,7 +194,6 @@ if (document.location.pathname != "/" && document.location.pathname != "/results
 					})
 				}
 			}
-			console.log('%c%s', 'color: eloy; font: 1.2rem/1 Tahoma;', "Отгадано вопросов " + countQuestion);
 
 			if (countQuestion == 3) {
 				newRaund();
@@ -276,7 +275,7 @@ if (document.location.pathname != "/" && document.location.pathname != "/results
 					$(".help_2").addClass("selected-answer");
 				}
 				console.log('%c%s', 'color: green; font: 1.2rem/1 Tahoma;', "Текущий игрок: " + selectPlayer);
-				console.log('%c%s', 'color: blue; font: 1.2rem/1 Tahoma;', "Счет: " + players[selectPlayer].score);
+
 			} else if (selectPlayer == $(this).data("player")) {
 				alertInfo("Игрок уже выбрал этот вопрос", "info", 2);
 			} else if ($(this).data("block") == 1) {

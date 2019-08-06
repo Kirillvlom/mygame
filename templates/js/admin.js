@@ -30,27 +30,47 @@ $(document).ready(function () {
         $(".text-max").html(lengthS);
     })
 
-    let dropIMG = document.getElementById('drop-img');
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        dropIMG.addEventListener(eventName, preventDefaults, false)
+    $(".round-c").click(function () {
+        $(".rounds-questions-content").animate({
+            scrollTop: $("#raund_" + $(this).data("raund")).offset().top - 108
+        }, 600);
+        return false;
     });
-
-    function preventDefaults(e) {
-        e.preventDefault()
-        e.stopPropagation()
-    };
-    ['dragenter', 'dragover'].forEach(eventName => {
-        dropIMG.addEventListener(eventName, highlight, false)
-    });
-    ['dragleave', 'drop'].forEach(eventName => {
-        dropIMG.addEventListener(eventName, unhighlight, false)
-    })
-
-    function highlight(e) {
-        dropIMG.classList.add('highlight')
+    const percenrageRaund = () => {
+        let rowQuestion = $(".row-question");
+        let percenrageRaund = [];
+        let percenrageRaundq = {
+            1: 0,
+            2: 0,
+            3: 0
+        }
+        for (let i = 0; i < rowQuestion.length; i++) {
+            percenrageRaund[i] = rowQuestion[i].dataset.ready;
+            if (percenrageRaund[i] == 1 && i < 30) {
+                percenrageRaundq[1] += 1;
+            } else
+            if (percenrageRaund[i] == 1 && (i < 60)) {
+                percenrageRaundq[2] += 1;
+            } else
+            if (percenrageRaund[i] == 1 && (i < 90)) {
+                percenrageRaundq[3] += 1;
+            }
+        }
+        for (const key in percenrageRaundq) {
+            $(".count-round-" + key).html(percenrageRaundq[key] + "/30 заполнено");
+            $("#percentage-round-" + key).html(Math.round(percenrageRaundq[key] / 30 * 100) + " %");
+            if (percenrageRaundq[key] < 15) {
+                $("#percentage-round-" + key).addClass("filling-percentage-0");
+            } else
+            if (percenrageRaundq[key] < 30) {
+                $("#percentage-round-" + key).addClass("filling-percentage-50");
+            } else
+            if (percenrageRaundq[key] == 30) {
+                $("#percentage-round-" + key).addClass("filling-percentage-100");
+            }
+        }
     }
 
-    function unhighlight(e) {
-        dropIMG.classList.remove('highlight')
-    }
+    percenrageRaund();
+
 });

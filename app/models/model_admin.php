@@ -1,6 +1,41 @@
 <?
 class Model_admin extends Model
 {
+    public $db;
+    function __construct()
+    {
+        $this->db = Model::db_connect();
+    }
+    //HTTP авторизация
+    public function authorization()
+    {
+        $params = [
+            'login' => 'pechenka.io',
+            'password' => password_hash("14888841", PASSWORD_DEFAULT)
+        ];
+        function authenticate()
+        {
+            header('WWW-Authenticate: Basic realm="Test Authentication System"');
+            header('HTTP/1.0 401 Unauthorized');
+            echo "Вы должны ввести корректный логин и пароль для получения доступа к ресурсу \n";
+            exit;
+        }
+        function clean($value = "")
+        {
+            $value = trim($value);
+            $value = stripslashes($value);
+            $value = strip_tags($value);
+            $value = htmlspecialchars($value);
+
+            return $value;
+        }
+        if (isset($_SERVER['PHP_AUTH_USER']) && (password_verify(clean($_SERVER['PHP_AUTH_PW']), $params['password'])) && (strtolower($_SERVER['PHP_AUTH_USER']) == $params['login'])) {
+            return "ok";
+        } else {
+            authenticate();
+        }
+    }
+
 
     //Создаем новые темы
     public function newTopics()
@@ -52,6 +87,27 @@ class Model_admin extends Model
         echo "<pre>";
         var_dump($newQuestion);
         $db->query($newQuestion);
-   
+    }
+
+    function getQuestion($question)
+    {
+        if ($question == "all") {
+            $getQuestion = "SELECT * FROM Questions";
+        } else {
+            $getQuestion = "SELECT * FROM Questions WHERE id_question = $question";
+        }
+        return $this->db->query($getQuestion)->fetchAll();
+    }
+
+    function getTopics($topic)
+    {
+
+        if ($topic == "all") {
+            $getTopics = "SELECT name_topics FROM Topics";
+        } else {
+            $getTopics = "SELECT name_topics FROM Topics WHERE id_topics = $topic";
+        }
+
+        return $this->db->query($getTopics)->fetchAll();
     }
 }
