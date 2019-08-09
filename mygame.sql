@@ -11,7 +11,7 @@
  Target Server Version : 50643
  File Encoding         : 65001
 
- Date: 06/08/2019 22:26:18
+ Date: 09/08/2019 12:48:19
 */
 
 SET NAMES utf8mb4;
@@ -39,7 +39,7 @@ CREATE TABLE `questions`  (
 -- Records of questions
 -- ----------------------------
 INSERT INTO `questions` VALUES (1, 1, 1, '/img/default/NoPicture.png', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.Lorem ipsum, dolor sit amet consectetur adipisicing elit.Lorem ipsum, dolor sit amet consectetur adipisicing elit.Lorem ipsum, dolor sit amet consectetur adipisicing elit.Lorem ipsum, dolor sit amet consectetur adipisicing elit.Lorem ipsum, dolor sit amet consectetur adipisicing elit.', '/audio/question_1.mp3', 100, 'a:4:{i:0;s:40:\"Первый вариант ответа\";i:1;s:40:\"Второй вариант ответа\";i:2;s:40:\"Третий вариант ответа\";i:3;s:46:\"Четвертый вариант ответа\";}', 3, '1');
-INSERT INTO `questions` VALUES (2, 1, 1, '/img/default/NoPicture.png', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.', '/audio/question.mp3', 200, 'a:4:{i:0;s:40:\"Первый вариант ответа\";i:1;s:40:\"Второй вариант ответа\";i:2;s:40:\"Третий вариант ответа\";i:3;s:46:\"Четвертый вариант ответа\";}', 3, '1');
+INSERT INTO `questions` VALUES (2, 1, 1, '/img/default/NoPicture.png', '', '', 200, '', NULL, '0');
 INSERT INTO `questions` VALUES (3, 1, 1, '/img/default/NoPicture.png', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.', '/audio/question.mp3', 300, 'a:4:{i:0;s:40:\"Первый вариант ответа\";i:1;s:40:\"Второй вариант ответа\";i:2;s:40:\"Третий вариант ответа\";i:3;s:46:\"Четвертый вариант ответа\";}', 3, '1');
 INSERT INTO `questions` VALUES (4, 1, 1, '/img/default/NoPicture.png', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.', '/audio/question.mp3', 400, 'a:4:{i:0;s:40:\"Первый вариант ответа\";i:1;s:40:\"Второй вариант ответа\";i:2;s:40:\"Третий вариант ответа\";i:3;s:46:\"Четвертый вариант ответа\";}', 3, '1');
 INSERT INTO `questions` VALUES (5, 1, 1, '/img/default/NoPicture.png', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.', '/audio/question.mp3', 500, 'a:4:{i:0;s:40:\"Первый вариант ответа\";i:1;s:40:\"Второй вариант ответа\";i:2;s:40:\"Третий вариант ответа\";i:3;s:46:\"Четвертый вариант ответа\";}', 3, '1');

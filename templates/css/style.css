@@ -67,7 +67,7 @@ body {
 	font-size: 45px;
 	font-weight: 900;
 	text-transform: uppercase;
-	background:#f44336;
+	background: #f44336;
 	border-radius: 50px;
 }
 
@@ -88,19 +88,21 @@ body {
 	position: relative;
 	overflow: hidden
 }
-.reply{
+
+.reply {
 	width: 55px;
-    height: 55px;
-    position: absolute;
-    top: 20px;
-    left: 50px;
-    border-radius: 50%;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer
+	height: 55px;
+	position: absolute;
+	top: 20px;
+	left: 50px;
+	border-radius: 50%;
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer
 }
+
 .header-table {
 	width: 100%;
 	height: 125px;
@@ -134,7 +136,7 @@ body {
 	background: #f97c75;
 }
 
-.table-name-colum > div{
+.table-name-colum>div {
 	color: #fff
 }
 
@@ -868,7 +870,7 @@ body {
 	background: #03a9f4;
 	border-radius: 30px;
 	margin-right: 25px;
-	color:#fff;
+	color: #fff;
 }
 
 .page-container-content {
@@ -1103,7 +1105,7 @@ body {
 	padding: 10px 0;
 	display: block;
 	color: #fff;
-	background: #f44336;
+	background: #001871;
 	width: 100%;
 	height: 40px;
 }
@@ -1162,10 +1164,15 @@ body {
 	border: 2px dashed grey;
 	border-radius: 5px;
 	display: block;
-	padding: 1.2em;
+	padding: 5px;
 	transition: border 300ms ease;
 	cursor: pointer;
 	text-align: center;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
 }
 
 .label i {
@@ -1180,6 +1187,10 @@ body {
 	transition: 200ms color;
 }
 
+.title {
+	display: block
+}
+
 .label:hover {
 	border: 2px solid #000
 }
@@ -1189,6 +1200,37 @@ body {
 	color: #000
 }
 
+.progres {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 2px;
+
+}
+
+.progres-value {
+	height: 100%;
+	width: 0%;
+	background: #4caf50;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color:#fff;
+}
+
+.errorSize::after{
+	content: "Слишком большой файл";
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    background: red;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media screen and (max-width: 1400px) {
 	.rounds-question-setting {
 		width: 100%;
@@ -1204,8 +1246,11 @@ body {
 		height: 85px;
 	}
 }
+
 @media screen and (max-height: 650px) {
-	.players-score, .game-control{
+
+	.players-score,
+	.game-control {
 		padding: 0;
 	}
 }
