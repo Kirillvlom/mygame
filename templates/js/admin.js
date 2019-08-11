@@ -48,7 +48,6 @@ $(document).ready(function () {
     $(".row-question").click(function (e) {
         divQuestion = this;
         svg = $(this).children().children().children();
-
         $.ajax({
             type: "POST",
             url: "/admin/getQuestion",
@@ -125,13 +124,13 @@ $(document).ready(function () {
         }
         $(".text-max").html(lengthS);
     })
-
+/*
     $(".round-c").click(function () {
         $(".rounds-questions-content").animate({
             scrollTop: $("#raund_" + $(this).data("raund")).offset().top - 108
         }, 600);
         return false;
-    });
+    });*/
     //Проценты заполнения вопросов
 
     const percenrageRaund = () => {
@@ -256,7 +255,6 @@ $(document).ready(function () {
 
     $('#save').on('click', function (e) {
         let formd = new FormData();
-
         function isEmpty(str) {
             return (typeof str === "undefined" || str === null || str === "");
         }
@@ -295,6 +293,7 @@ $(document).ready(function () {
                 contentType: false,
                 type: 'POST',
                 success: function (json) {
+                    console.log(json);
                     if (json == "ок") {
                         alertInfo("Информация обновлена", "info", 2);
                         $(svg).css({

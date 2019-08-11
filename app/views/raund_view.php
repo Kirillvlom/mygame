@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="schedule-q">
                                         <div class="q-colum"><span id='colum_3'>25%</span></div>
-                                        <div class="q-letter">В</div>
+                                        <div class="q-letter">Г</div>
                                     </div>
 
                                 </div>

@@ -359,9 +359,12 @@ body {
 	cursor: pointer;
 	word-wrap: break-word;
 	padding: 10px;
-	font-size: 15px;
+	font-size: 18px;
 	transition: ease .3s;
 	position: relative;
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .answer-letter {
@@ -525,6 +528,7 @@ body {
 .q-text {
 	text-align: justify;
 	padding: 15px;
+	font-size: 25px;
 }
 
 .q-text>p {
@@ -915,7 +919,9 @@ body {
 	margin-bottom: 15px;
 	cursor: pointer;
 }
-
+.rounds > a{
+	width: 100%;
+}
 .c-title {
 	color: #72777a;
 	font-size: 30px;
@@ -928,7 +934,9 @@ body {
 	align-items: center;
 	padding: 20px 0;
 }
-
+.c-info > span{
+	color:#000;
+}
 .filling-percentage {
 	padding: 7px 15px;
 	border-radius: 30px;
@@ -992,13 +1000,14 @@ body {
 
 .row-question {
 	width: 270px !important;
-	height: 280px;
+	max-height: 350px;
 	background: #fff;
 	border: 1px solid rgba(0, 0, 0, .0625);
 	padding: 10px 20px;
 	margin-bottom: 15px;
 	cursor: pointer;
 	border-radius: 7px;
+	overflow: hidden;
 }
 
 .row-question-title {

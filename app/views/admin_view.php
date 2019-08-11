@@ -21,7 +21,7 @@
         const loader = document.getElementById('loader');
         setTimeout(() => {
             loader.classList.add('fadeOut');
-        }, 0);
+        }, 500);
     });
 </script>
 <div class="main-unit-admin">

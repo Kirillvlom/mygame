@@ -3,28 +3,34 @@
 </div>
 <div class="content-questions">
     <div class="row-content rounds">
-        <div class="round-c" data-raund='1'>
-            <div class="c-title">1 раунд</div>
-            <div class="c-info">
-                <span class="count-round-1">10/30 заполнено</span>
-                <div class="filling-percentage " id="percentage-round-1">33 %</div>
-            </div>
-        </div>
-        <div class="round-c" data-raund='2'>
-            <div class="c-title">2 раунд</div>
-            <div class="c-info">
-                <span class="count-round-2">15/30 заполнено</span>
-                <div class="filling-percentage " id="percentage-round-2">50 %</div>
-            </div>
-        </div>
-        <div class="round-c" data-raund='3'>
-            <div class="c-title">3 раунд</div>
-            <div class="c-info">
-                <span class="count-round-3">30/30 заполнено</span>
-                <div class="filling-percentage " id="percentage-round-3">100 %
+        <a href="#raund_1">
+            <div class="round-c" data-raund='1'>
+                <div class="c-title">1 раунд</div>
+                <div class="c-info">
+                    <span class="count-round-1">10/30 заполнено</span>
+                    <div class="filling-percentage " id="percentage-round-1">33 %</div>
                 </div>
             </div>
-        </div>
+        </a>
+        <a href="#raund_2">
+            <div class="round-c" data-raund='2'>
+                <div class="c-title">2 раунд</div>
+                <div class="c-info">
+                    <span class="count-round-2">15/30 заполнено</span>
+                    <div class="filling-percentage " id="percentage-round-2">50 %</div>
+                </div>
+            </div>
+        </a>
+        <a href="#raund_3">
+            <div class="round-c" data-raund='3'>
+                <div class="c-title">3 раунд</div>
+                <div class="c-info">
+                    <span class="count-round-3">30/30 заполнено</span>
+                    <div class="filling-percentage " id="percentage-round-3">100 %
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
 
     <div class="row-content rounds-questions">
@@ -36,7 +42,7 @@
                 echo "<div class='row-block'>
                 <div class='row-content row-title'>";
                 if (in_array($l, [0, 30, 60])) {
-                    echo " <span id='raund_" . $raund . "'>Раунд $raund</span> <br>";
+                    echo " <span id='raund_" . $raund . "'><a name='raund_" . $raund . "'></a>Раунд $raund</span> <br>";
                     $raund++;
                 }
                 echo "" . $data["Topics"][$i]["name_topics"] . "</div>
