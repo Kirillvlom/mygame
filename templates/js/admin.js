@@ -11,12 +11,43 @@ $(document).ready(function () {
         },
         okanswer: null
     }
-    let newFile = {
-        img: "no",
-        audio: "no"
-    };
+    let svg;
+    let divQuestion;
+    let timeShow = 2;
+    const alertInfo = (textInfo, typeInfo, timeShow) => {
+        if (typeInfo == "error") {
+            $(".main-unit-admin").append("<div class='alert-info-opacity'>\
+            <div class='alert-info'><div class='info-title alert-error'>\
+            Ошибка</div><span class='info-text'>" + textInfo + "</span></div></div");
+        } else if (typeInfo == "info") {
+            $(".main-unit-admin").append("<div class='alert-info-opacity'>\
+            <div class='alert-info'><div class='info-title alert-information'>\
+            Информация</div><span class='info-text'>" + textInfo + "</span></div></div");
+        }
+        $(".alert-info-opacity").show('300');
+        setTimeout(function () {
+            $(".alert-info-opacity").hide('slow');
+        }, timeShow * 1000);
+        setTimeout(function () {
+            $(".alert-info-opacity").remove();
+        }, timeShow * 1000);
+
+    }
+    //Увеличение фото при клике
+    $("#Question_img").click(function () {
+        let src = $(this).prop("src");
+        let div = $(".alert-img-opacity");
+        $("#alert-img").prop("src", src);
+        $(div).fadeIn();
+    });
+    $(".alert-img-opacity").click(function () {
+        $(this).fadeOut();
+    });
+
     //Открытие вопроса
     $(".row-question").click(function (e) {
+        divQuestion = this;
+        svg = $(this).children().children().children();
 
         $.ajax({
             type: "POST",
@@ -48,9 +79,14 @@ $(document).ready(function () {
                         $("#Question_answer_3").val(Question_[i][3]);
                         $("#Question_answer_4").val(Question_[i][4]);
                     } else if (id == "Question_audio") {
-                        $("#" + id).html("<audio controls><source src='" + Question_[i] + "' type='audio/mp3'></audio>");
+                        $("#" + id).html("<audio controls id='Question_audio'><source src='" + Question_[i] + "' type='audio/mp3' ></audio>");
                     } else if (id == "Question_img") {
-                        $("#" + id).prop("src", Question_[i])
+                        if (!Question_[i]) {
+                            $("#" + id).prop("src", "/img/default/NoPicture.png");
+                        } else {
+                            $("#" + id).prop("src", Question_[i]);
+                        }
+
                     } else if (id == "Question_text") {
                         $("#textarea_text").val(Question_[i]);
                     } else if (id == "Question_answer") {
@@ -97,6 +133,7 @@ $(document).ready(function () {
         return false;
     });
     //Проценты заполнения вопросов
+
     const percenrageRaund = () => {
         let rowQuestion = $(".row-question");
         let percenrageRaund = [];
@@ -131,18 +168,22 @@ $(document).ready(function () {
             }
         }
     }
+
     $(".files").change(function () {
         let formd = new FormData();
         let url = null;
-        let maxSize = 31457280;
-        formd.append("id_question", dataAjax.id_question)
+        let maxSize = "31457280";
+        formd.append("id_question", dataAjax.id_question);
+
         function ajax(formd, typeFile = null) {
             switch (typeFile) {
                 case "img":
+                    maxSize = 5242880;
                     url = "/admin/update/img";
                     break;
                 case "audio":
-                    url = "/admin/update/audio"
+                    maxSize = 31457280;
+                    url = "/admin/update/audio";
                     break;
                 default:
                     break;
@@ -153,21 +194,18 @@ $(document).ready(function () {
                 processData: false,
                 contentType: false,
                 type: 'POST',
-                success: function (msg) {
-                    console.log(msg);
-                },
                 xhr: function () {
                     var xhr = $.ajaxSettings.xhr();
                     xhr.upload.addEventListener('progress', function (evt) {
                         if (evt.lengthComputable) {
                             var percentComplete = Math.ceil(evt.loaded / evt.total * 100);
-                            $("#prog"+typeFile).animate({
+                            $("#prog" + typeFile).animate({
                                 width: percentComplete + '%'
                             }, 500);
 
                             if (percentComplete == 100) {
                                 setTimeout(function () {
-                                    $("#prog"+typeFile).animate({
+                                    $("#prog" + typeFile).animate({
                                         width: 0
                                     }, 500);
                                 }, 500)
@@ -178,11 +216,20 @@ $(document).ready(function () {
                     return xhr;
                 },
                 success: function (json) {
-                    console.log(json)
+                    let data = JSON.parse(json);
+                    console.log(data);
+                    if (data[0] == "img") {
+                        $("#Question_img").prop("src", data[1] + "?" + new Date().valueOf());
+                        $(".id_question_" + dataAjax.id_question).prop("src", data[1] + "?" + new Date().valueOf());
+                    } else if (data[0] == "audio") {
+                        $("#Question_audio").prop("src", data[1] + "?" + new Date().valueOf());
+                        $(".audio_question_" + dataAjax.id_question).prop("src", data[1] + "?" + new Date().valueOf());
+                    }
                 }
             });
         }
-        if (this.files[0].size <= +maxSize) {
+        if (this.files[0].size <= maxSize) {
+            
             switch (this.name) {
                 case "fileImg":
                     $("#title_1").html(this.files[0].name);
@@ -198,20 +245,18 @@ $(document).ready(function () {
                 default:
                     break;
             }
-        }else{
+        } else {
             $(this).parent().addClass("errorSize");
             setTimeout(function () {
                 $(".label").removeClass("errorSize");
             }, 500)
         }
-
-
     })
-    /*
-    $('#my_form').on('submit', function (e) {
-        e.preventDefault();
-		var $that = $(this),
-				formData = new FormData($that.get(0));
+
+
+    $('#save').on('click', function (e) {
+        let formd = new FormData();
+
         function isEmpty(str) {
             return (typeof str === "undefined" || str === null || str === "");
         }
@@ -226,45 +271,89 @@ $(document).ready(function () {
             if (key == "answer") {
                 for (const e in dataAjax.answer) {
                     if (isEmpty(dataAjax.answer[e])) {
-                        console.log("Заполните ответ" + e);
+                        alert("Заполните ответ " + e);
                         ok++;
                     }
                 }
             } else if (isEmpty(dataAjax[key]) && key != "audio") {
-                console.log("Пусто " + key);
+                alert("Отметь правильный ответ");
                 ok++;
             }
         }
         if (ok == 0) {
+            formd.append("answer_1", dataAjax.answer[1]);
+            formd.append("answer_2", dataAjax.answer[2]);
+            formd.append("answer_3", dataAjax.answer[3]);
+            formd.append("answer_4", dataAjax.answer[4]);
+            formd.append("okanswer", dataAjax.okanswer);
+            formd.append("text", dataAjax.text);
+            formd.append("id_question", dataAjax.id_question);
             $.ajax({
                 url: "/admin/update/question",
-                type: "POST",
-                contentType: false,
+                data: formd,
                 processData: false,
-                data: dataAjax,
-                dataType: 'html',
-                xhr: function () {
-                    var xhr = $.ajaxSettings.xhr(); // получаем объект XMLHttpRequest
-                    xhr.upload.addEventListener('progress', function (evt) { // добавляем обработчик события progress (onprogress)
-                        if (evt.lengthComputable) { // если известно количество байт
-                            // высчитываем процент загруженного
-                            var percentComplete = Math.ceil(evt.loaded / evt.total * 100);
-                            console.log(percentComplete);
-                        }
-                    }, false);
-                    return xhr;
-                },
+                contentType: false,
+                type: 'POST',
                 success: function (json) {
-                    console.log(json)
+                    if (json == "ок") {
+                        alertInfo("Информация обновлена", "info", 2);
+                        $(svg).css({
+                            fill: "#4caf50"
+                        });
+                        $(divQuestion).data("ready", "1");
+                        $(divQuestion).children(".row-question-text").html(dataAjax.text);
+                        percenrageRaund();
+                    }
                 }
             });
         } else {
-            console.log("Заполните всю информацию")
+            alert("Заполните всю информацию")
         }
     });
 
-*/
-
+    $(".link-menu").click(function () {
+        switch ($(this).data("link")) {
+            case "admin":
+                document.location.href = "/admin";
+                break;
+            case "topics":
+                document.location.href = "/admin/topics";
+                break;
+            case "results":
+                document.location.href = "/results/";
+                break;
+            case "export":
+                alertInfo("Данный раздел в разработке", "error", 2)
+                break;
+            case "statistics":
+                alertInfo("Данный раздел в разработке", "error", 2)
+                break;
+            case "help-gitHub":
+                window.open('https://github.com/Kirillvlom/mygame/blob/master/README.md', '_blank');
+                break;
+            default:
+                break;
+        }
+    });
+    $('.topicSave').on('click', function () {
+        let value = $("#topic_" + $(this).data("topic")).val();
+        let formd = new FormData();
+        formd.append("text", value);
+        formd.append("id_topic",$(this).data("topic"))
+        $.ajax({
+            url: "/admin/update/topics",
+            data: formd,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function (json) {
+                console.log(json);
+                if (json == "ок") {
+                    alertInfo("Информация обновлена", "info", 2);
+                }
+            }
+        });
+    });
 
 
     percenrageRaund();

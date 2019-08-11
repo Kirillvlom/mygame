@@ -103,11 +103,40 @@ class Model_admin extends Model
     {
 
         if ($topic == "all") {
-            $getTopics = "SELECT name_topics FROM Topics";
+            $getTopics = "SELECT name_topics, id_topics  FROM Topics";
         } else {
-            $getTopics = "SELECT name_topics FROM Topics WHERE id_topics = $topic";
+            $getTopics = "SELECT name_topicsFROM Topics WHERE id_topics = $topic";
         }
 
         return $this->db->query($getTopics)->fetchAll();
+    }
+    function updateQuestion($typeFile, $data, $id_question)
+    {
+        switch ($typeFile) {
+            case 'img':
+                $sql = "UPDATE questions SET  picture = '/img/$data' WHERE id_question = $id_question";
+                break;
+            case 'audio':
+                $sql = "UPDATE questions SET  audio = '/audio/$data' WHERE id_question = $id_question";
+                break;
+            case 'question':
+                $sql = "UPDATE questions SET";
+                $answers = serialize([
+                    0 => $data["answer_1"],
+                    1 => $data["answer_2"],
+                    2 => $data["answer_3"],
+                    3 => $data["answer_4"]
+                ]);
+                $sql .= " answers = '$answers', text = '" . $data["text"] . "', answer = '" . $data["okanswer"] . "',  ready = '1' ";
+                $sql .= " WHERE id_question = '$id_question'";
+                break;
+            case 'topics':
+                $sql = "UPDATE topics SET  name_topics = '$data' WHERE id_topics = $id_question";
+                break;
+            default:
+                # code...
+                break;
+        }
+        return $this->db->query($sql);
     }
 }

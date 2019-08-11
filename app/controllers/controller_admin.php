@@ -41,16 +41,70 @@ class Controller_Admin extends Controller
     }
     function action_update($e)
     {
+        $pach = "";
+        switch ($e) {
+            case 'img':
+                $pach = "/img/";
+                break;
+            case 'audio':
+                $pach = "/audio/";
+                break;
+        }
         $id_question =  $_POST['id_question'];
-        if ($_FILES["audio"]["size"] > 31457280) {
-            echo ("Размер файла превышает 30 мегабайт");
-            exit;
-        }
-        // Проверяем загружен ли файл
-        if (is_uploaded_file($_FILES["audio"]["tmp_name"])) {
-            move_uploaded_file($_FILES["audio"]["tmp_name"], "../audio/" .$id_question."_". $_FILES["audio"]["name"]);
+        if ($e == "img" or $e == "audio") {
+
+            if ($_FILES["audio"]["size"] > 31457280) {
+                echo ("Размер файла превышает 30 мегабайт");
+                exit;
+            }
+            if ($_FILES["img"]["size"] > 31457280) {
+                echo ("Размер файла превышает 30 мегабайт");
+                exit;
+            }
+            if (is_uploaded_file($_FILES["$e"]["tmp_name"])) {
+                $filename = "question_$id_question" . "." . pathinfo($_FILES["$e"]["name"])["extension"];
+                if (move_uploaded_file($_FILES["$e"]["tmp_name"], DIRPACH . $pach . $filename)) {
+                    if ($this->model->updateQuestion($e, $filename, $id_question)) {
+                        $dat = [
+                            $e, $pach . $filename
+                        ];
+                        echo json_encode($dat);
+                    } else {
+                        echo "Ошибка записи в бд";
+                    }
+                }
+            } else {
+                echo ("Ошибка загрузки файла");
+            }
+        } else if ($e == "topics") {
+            $text = $_POST["text"];
+            $id_topic = $_POST["id_topic"];
+            Controller::data_processing($text);
+            if ($this->model->updateQuestion($e, $text, $id_topic)) {
+                echo "ок";
+            } else {
+                echo "Ошибка записи в бд";
+            }
         } else {
-            echo ("Ошибка загрузки файла");
+            $data = [];
+            foreach ($_POST as $key => $value) {
+                Controller::data_processing($value);
+                $data[$key] = $value;
+            }
+            if ($this->model->updateQuestion($e, $data, $id_question)) {
+                echo "ок";
+            } else {
+                echo "Ошибка записи в бд";
+            }
         }
+    }
+    function action_topics()
+    {
+        $this->view->generate('topics_view.php', 'admin_view.php', 'Темы', $this->model->getTopics("all"));
+    }
+    function action_sql()
+    {
+        $homepage = file_get_contents(DIRPACH . '/backup/1.txt');
+
     }
 }

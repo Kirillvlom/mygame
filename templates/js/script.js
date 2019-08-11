@@ -328,7 +328,7 @@ if (document.location.pathname != "/" && document.location.pathname != "/results
 						} else if (id == "Question_audio") {
 							$("#" + id).html("<audio controls><source src='" + Question_[i] + "' type='audio/mp3'></audio>");
 						} else if (id == "Question_img") {
-							$("#" + id).prop("src", Question_[i])
+							$("#" + id).prop("src", Question_[i]+"?"+Math.random())
 						} else {
 							$("#" + id).html(Question_[i]);
 						}
